@@ -1,6 +1,6 @@
 bl_info = {
     "name" : "Mo Globals",
-    "blender" : (3, 30, 0),
+    "blender" : (3, 3, 0),
     "location" : "View3D",
     "category" : "3D View"
 }
@@ -49,11 +49,10 @@ class GLOBALS_PT_MoGlobalSettings(Panel):
     def draw(self, context):
         layout = self.layout
         scene = context.scene
-        col = layout.column(align=True)
-        prop = col.operator(MoChangeClippingValues.bl_idname, text="Change Clipping Values")
-        print(scene.MoGlobalsProps)
         layout.prop(scene.MoGlobalsProps,'global_clip_start')
         layout.prop(scene.MoGlobalsProps,'global_clip_end')
+        col = layout.column(align=True)
+        prop = col.operator(MoChangeClippingValues.bl_idname, text="Change Clipping Values")
 
 
 class MoGlobalsProperties(bpy.types.PropertyGroup):
