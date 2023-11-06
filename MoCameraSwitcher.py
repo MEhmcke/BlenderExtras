@@ -9,10 +9,10 @@ from mathutils import Vector
 
 
 class MoCameraSwitcher(bpy.types.Operator):
-    """Set the object origin to the currently selected verts"""      # Use this as a tooltip for menu items and buttons.
-    bl_idname = "mo.camera_switcher"        # Unique identifier for buttons and menu items to reference.
-    bl_label = "Camera Switcher"            # Display name in the interface.
-    bl_options = {'REGISTER', 'UNDO'}           # Enable undo for the operator.
+    """Switches around the active camera in the scene"""        # Use this as a tooltip for menu items and buttons.
+    bl_idname = "mo.camera_switcher"                            # Unique identifier for buttons and menu items to reference.
+    bl_label = "Camera Switcher"                                # Display name in the interface.
+    bl_options = {'REGISTER', 'UNDO'}                           # Enable undo for the operator.
 
     def execute(self, context):        # execute() is called when running the operator.
 
