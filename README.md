@@ -5,6 +5,6 @@ Extras currently:
 * N-Panel > Globals
 * Headermenu > Explorer
 * Edit-Mode > Origin to selection (sets origin to selected verts)
-* Information in the viewport
+* Information in the viewport (not available since Blender 4.0)
 * Switching between cameras (Object RMB > "Add to Quick Favorites" for easy use)
 * Creating custom orientation from selected vertices (Keymap > "mo.create_vertex_orientation")
