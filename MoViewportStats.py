@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Mo Viewport Stats",
-    "blender": (2, 80, 0),
+    "blender": (4, 0, 0),
     "category" : "3D View"
 }
 
@@ -50,13 +50,13 @@ def draw_callback_px(self, context):
     
     font_id2 = fontInfo["font_id"]
     blf.position(font_id2, 2, 60, 0)
-    blf.size(font_id2, 24, 72)
+    blf.size(font_id2, 32)
     blf.draw(font_id2, get_current_timeline_marker())
     
     
     font_id = fontInfo["font_id"]
     blf.position(font_id, 2, 20, 0)
-    blf.size(font_id, 22, 72)
+    blf.size(font_id, 32)
     blf.draw(font_id, faceOrientationString)
 
 def register():
