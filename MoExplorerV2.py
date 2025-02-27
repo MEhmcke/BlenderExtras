@@ -9,6 +9,7 @@ import os
 import subprocess
 import datetime
 
+
 class MoShowLastExport(bpy.types.Operator):
     bl_idname = "mo.show_last_export"
     bl_label = "Show Last Export"
@@ -50,6 +51,34 @@ class MoShowProjectFolder(bpy.types.Operator):
     def execute(self, context):
         subprocess.Popen('explorer ' + bpy.path.abspath("//"))
         return {'FINISHED'}
+        
+class MoShowPureRef(bpy.types.Operator):
+    bl_idname = "mo.open_pureref"
+    bl_label = "Open PureRef File"
+
+    def execute(self, context):
+        projectDir = bpy.path.abspath("//")
+        pureRefFile = ""
+        
+        # Go trough all dirs 
+        for dirs in os.walk(projectDir):
+            for name in dirs:
+                # Search for "Ref" (reference directory)
+                if "\Ref" in name:
+                    for files in os.walk(name):
+                        # Go trough all the files (files are at index 2)
+                        for export in files[2]:
+                            # Get full path to file
+                            foundFile = files[0] + "\\" + export
+                            if foundFile.endswith(".pur"):
+                                pureRefFile = foundFile
+                                break
+        # Open PureRef file, if found
+        if pureRefFile != "":
+            os.startfile(pureRefFile)
+            return {'FINISHED'}
+        else:
+            return {'CANCELLED'}
 
 class TOPBAR_MT_custom_menu(bpy.types.Menu):
     bl_label = "Explorer"
@@ -58,6 +87,7 @@ class TOPBAR_MT_custom_menu(bpy.types.Menu):
         layout = self.layout
         layout.operator("mo.show_project_folder")
         layout.operator("mo.show_last_export")
+        layout.operator("mo.open_pureref")
 
     def menu_draw(self, context):
         self.layout.menu("TOPBAR_MT_custom_menu")
@@ -67,6 +97,7 @@ classes = (
     TOPBAR_MT_custom_menu,
     MoShowProjectFolder,
 	MoShowLastExport,
+    MoShowPureRef,
 )
 
 
