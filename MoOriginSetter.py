@@ -18,7 +18,7 @@ class MoOriginSetter(bpy.types.Operator):
 
         # saving the mode and cursor location to swap to it at the end
         startingMode = bpy.context.active_object.mode
-        startingCursorLoc = bpy.context.scene.cursor.location
+        startingCursorLoc = Vector(bpy.context.scene.cursor.location)
 
         # the selection is only updated on object mode switch
         bpy.ops.object.mode_set(mode='EDIT')
