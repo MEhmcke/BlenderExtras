@@ -57,6 +57,7 @@ def menu_func(self, context):
 def register():
     bpy.utils.register_class(MoOriginSetter)
     bpy.types.VIEW3D_MT_object.append(menu_func)  # Adds the new operator to an existing menu.
+    bpy.types.VIEW3D_MT_editor_menus.append(menu_func)  # Adds the new operator to an existing menu.
 
 def unregister():
     bpy.utils.unregister_class(MoOriginSetter)
